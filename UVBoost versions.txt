@@ -1,0 +1,6 @@
+0.1 - April 4, 2022 - Training modes and preliminary study
+0.2 - April 10, 2022 - New databases provided by TUV and SBDART radiative transfer models
+0.3 - April 13, 2022 - New version based on Friedmann and Nemenyi statistical tests
+0.4 - May 04, 2022 - First version with robust dependent and independent databases
+0.5.1 - June 03, 2022 - UVBoost Python routine for users 
+0.5.2 - June 04, 2022 - Inclusion of dependent database for vitamin D weighted irradiance calculations
