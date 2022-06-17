@@ -2,7 +2,7 @@
 # UVBoost: a hybrid radiative transfer and machine learning model for estimating ultraviolet radiation  # 
 # Developed by Prof. Marcelo de Paula Corrêa (mpcorrea@unifei.edu.br)                                   #
 # Natural Resources Institute - Federal University of Itajubá - Brazil                                  #
-# Version 0.5.2                                                                                        #
+# Version 0.5.3                                                                                       #
 # June/2022                                                                                             #
 #########################################################################################################
 import numpy as np
@@ -21,13 +21,13 @@ start = timeit.default_timer()
 df_x = pd.read_csv('x_indep_hires.csv', header=None)
 if typeset == 1:
     df_y = pd.read_csv('y_dep_hires.csv', header=None)
-elif typeset ==2:
+elif typeset == 2:
     df_y = pd.read_csv('y_vitD_dep_hires.csv', header=None)
 else: 
     print('\nYou should have put 1 or 2. No problem, test UVBoost anyway with some UV index calculations.')
     df_y = pd.read_csv('y_dep_hires.csv', header=None)
 from sklearn.linear_model import LinearRegression
-catboost = CatBoostRegressor(iterations=1000, learning_rate=0.08, depth=5, random_state=10, verbose=True)
+catboost = CatBoostRegressor(iterations=1000, learning_rate=0.08, depth=5, random_state=10, verbose=False)
 catboost.fit(df_x,df_y)
 stop = timeit.default_timer()
 print(f'\nIt was not so hard! Warm-up time: {(stop - start):.1f} seconds')
@@ -58,9 +58,11 @@ while inpset:
 ### Saving the information
     if inpset == 1:
         data = np.array([estima_CAT]).T
-        data = data*40
-        data
-        df = pd.DataFrame(data, columns=['UVI'])
+        if typeset != 2:
+            data = data*40
+            df = pd.DataFrame(data, columns=['UVI'])
+        else:
+            df = pd.DataFrame(data, columns=['VitD'])
         df_inp = pd.DataFrame(df_inp, columns=['SZA','CTO','AOD'])
         df = pd.concat([df_inp,df],axis=1)
         outputfile = 'OUT_'+namefile
@@ -72,7 +74,10 @@ while inpset:
     else:
         if estima_CAT < 0:
             estima_CAT = 0
-        print('UVI =', estima_CAT*40)
+        if typeset != 2:
+            print('UVI = %.1f' % (estima_CAT*40))
+        else:
+            print('Vitamin D weighted irradiance (W/m2) = %.3f' % (estima_CAT))
         opt = input('\nAnother calculation ? \n0: NO \nany other number: YES \n\n My option:')
         opt = int(opt)
         if opt == 0:

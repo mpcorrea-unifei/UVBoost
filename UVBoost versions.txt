@@ -4,3 +4,4 @@
 0.4 - May 04, 2022 - First version with robust dependent and independent databases
 0.5.1 - June 03, 2022 - UVBoost Python routine for users 
 0.5.2 - June 04, 2022 - Inclusion of dependent database for vitamin D weighted irradiance calculations
+0.5.3 - June 17, 2022 - Fix output for vitD irradiances
