@@ -1,0 +1,55 @@
+#########################################################################################################
+# UVBoost: a hybrid radiative transfer and machine learning model for estimating ultraviolet radiation  # 
+# Developed by Prof. Marcelo de Paula Corrêa (mpcorrea@unifei.edu.br)                                   #
+# Natural Resources Institute - Federal University of Itajubá - Brazil                                  #
+# Version 0.5.3                                                                                         #
+# June/2022                                                                                             #
+#########################################################################################################
+
+USER'S MANUAL
+
+1.0 SOFTWARE OVERVIEW
+
+- UVBoost is a hybrid radiative transfer and machine learning model for estimating ultraviolet radiation irradiances and doses.
+- UVBoost is specially designed to educational and scientific purposes
+- UVBoost runs in Python environment
+
+1.1. RUNNING UVBOOST
+
+a) In the command prompt of your operation system, type: "python UVBoost.py" (without the quotes)
+
+Note: If you don't have python installed on your computer, install it from https://www.python.org
+
+b) You will see the following information:
+
+Welcome to UVBoost
+
+UVBoost is warming up! Stay cool.... It's only a few seconds.
+
+What do you want to calculate?:
+1) Ultraviolet Index (Erythemal irradiances);
+2) Vitamin D weighted irradiances
+My option:
+
+c) Set your option: 1) for UV Index calculations OR 2) Vitamin D weighted irradiances calculations.
+If you enter a number other than 1 or 2, UVBoost will calculate the UV Index.
+
+Note: In this step, you will see the training time of the ML regression model.
+
+d) UVBoost has trained to find the best adjust for your calculations. Now, you should choose the input format data:
+
+Select input data format:
+1) datasheet (csv);
+2) data on screen
+My option:
+
+e) Choosing 1, your input data must be a datasheet (csv format) with the following columns: Column 1 - Solar Zenith Angles (in degrees); Column 2 - Total Ozone Content (in Dobson Units); and, Column 3 - Aerosol Optical Depth (Dimensionless).
+Otherwise, you have to manually input the data according to the information on the screen.
+
+f) If you chose option 1, UVBoost will generate an output file with your results. Otherwise, UVI or the Vitamin D weighted irradiance will be showed on the screen. 
+
+g) If you want another calculation, just click any key. Or, 0 to exit.
+
+1.2 CONTACT
+
+If you have any questions, you can contact mpcorrea@unifei.edu.br
